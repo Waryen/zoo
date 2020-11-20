@@ -1,0 +1,185 @@
+body {
+    background-color: #252525;
+    color: #ffffff;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+div#wrapper {
+    display: grid;
+    font-size: 0.8em;
+    border: solid 3px silver;
+    border-radius: 10px;
+    background-color: #0e5e3f15;
+}
+
+div#wrapper h2 {
+    color: rgb(76, 187, 150);
+}
+
+body > h1 {
+    text-align: center;
+    color: rgb(60, 134, 110);
+    font-size: 3em;
+}
+
+#copyrights {
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+
+
+
+/* grid */
+
+div.form-animal {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    padding: 10px;
+    border-bottom: solid 3px silver;
+    border-right: solid 3px silver;
+}
+
+div.form-area {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    padding: 10px;
+    border-bottom: solid 3px silver;
+}
+
+div.table-animals {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    padding: 10px;
+    border-right: solid 3px silver;
+}
+
+div.list-area {
+    grid-column: 2;
+    grid-row: 2;
+    width: 100%;
+    padding: 10px;
+}
+
+
+
+
+/* form-animal */
+
+.form-animal {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-animal h2 {
+    text-align: center;
+}
+
+.form-animal form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+
+/* form area */
+
+.form-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-area h2 {
+    text-align: center;
+}
+
+.form-area form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+
+/* table animals */
+
+.table-animals {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.table-animals table {
+    border: 1px solid #ffffff;
+}
+
+.table-animals table thead {
+    font-size: 2em;
+    color: rgb(76, 187, 150);
+}
+
+.table-animals table td {
+    border: 1px solid #ffffff;
+    padding: 5px;
+    text-align: center;
+}
+
+
+
+
+/* liste des zones */
+
+.list-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.list-area ol h3 {
+    font-size: 1.5em;
+}
+
+.list-area ol h4 {
+    font-size: 1.2em;
+}
+
+.list-area ol {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    list-style-type: none;
+}
+
+.list-area ol > li {
+    margin: 0 10px;
+    margin: 5px;
+}
+
+.list-area ul {
+    list-style-type: none;
+}
+
+.list-area ul h3 span {
+    color: rgb(76, 187, 150);
+}
+
+.list-area .area-animals {
+    border: solid 1px #ffffff;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.list-area .area-animals h4 {
+    text-decoration: underline;
+}

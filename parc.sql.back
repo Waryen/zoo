@@ -1,0 +1,111 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 17, 2020 at 06:33 PM
+-- Server version: 5.7.14
+-- PHP Version: 7.0.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `parc`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `animals`
+--
+
+CREATE TABLE `animals` (
+  `pk` int(11) NOT NULL,
+  `race` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `gender` varchar(255) NOT NULL,
+  `diet` varchar(255) NOT NULL,
+  `fk_area` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `animals`
+--
+
+INSERT INTO `animals` (`pk`, `race`, `name`, `gender`, `diet`, `fk_area`) VALUES
+(1, 'Lion', 'Simba', 'male', 'carnivore', 2),
+(2, 'Giraffe', 'Melman', 'male', 'herbivore', 2),
+(3, 'Ours', 'Macha', 'female', 'omnivore', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `areas`
+--
+
+CREATE TABLE `areas` (
+  `pk` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `areas`
+--
+
+INSERT INTO `areas` (`pk`, `name`, `status`) VALUES
+(1, 'Tundra', 'open'),
+(2, 'Afrique', 'work'),
+(3, 'Eau', 'closed');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `animals`
+--
+ALTER TABLE `animals`
+  ADD PRIMARY KEY (`pk`),
+  ADD KEY `fk_area` (`fk_area`);
+
+--
+-- Indexes for table `areas`
+--
+ALTER TABLE `areas`
+  ADD PRIMARY KEY (`pk`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `animals`
+--
+ALTER TABLE `animals`
+  MODIFY `pk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `areas`
+--
+ALTER TABLE `areas`
+  MODIFY `pk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `animals`
+--
+ALTER TABLE `animals`
+  ADD CONSTRAINT `fk_area_relation` FOREIGN KEY (`fk_area`) REFERENCES `areas` (`pk`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
