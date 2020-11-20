@@ -8,7 +8,7 @@
 <div class='form-animal'>
     <h2>Ajouter un animal</h2>
 
-    <form action="controller/FormController.php" method="post">
+    <form action="controller/FormAnimalController.php" method="post">
         <p>
             <label for="name">Nom: </label>
             <input type="text" name="animalName" id="" required>

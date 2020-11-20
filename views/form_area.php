@@ -1,7 +1,7 @@
 <div class='form-area'>
     <h2>Ajouter une zone</h2>
 
-    <form action="controller/FormController.php" method="post">
+    <form action="controller/FormAreaController.php" method="post">
         <p>
             <label for="name">Nom: </label>
             <input type="text" name="areaName" id="" required>

@@ -112,7 +112,7 @@ class AreaDAO {
 
     public function modify_area($pkArea, $areaName, $status) {
         try {
-            $statement = $this->connection->prepare("UPDATE {$this->table} SET name = '$name', status = '$status' WHERE pk = ?");
+            $statement = $this->connection->prepare("UPDATE {$this->table} SET name = '$areaName', status = '$status' WHERE pk = ?");
             $statement->execute([$pkArea]);
             
         } catch (PDOException $e) {

@@ -3,7 +3,7 @@
 require '../model/AnimalDAO.php';
 require '../model/AreaDAO.php';
 
-// Objet des formulaires d'ajout d'animal et zone
+// Objet d'ajout d'un animal
 
 class Form {
     private $connection;
@@ -16,10 +16,6 @@ class Form {
     private $regime;
     private $zone;
     private $animalDeja;
-    // form area
-    private $areaName;
-    private $status;
-    private $areaDeja;
 
     public function __construct() {
         $this->connection = new PDO('mysql:host=localhost;dbname=parc', 'root', 'root');
@@ -31,23 +27,9 @@ class Form {
         $this->genre = htmlspecialchars($_POST['gender']);
         $this->regime = htmlspecialchars($_POST['diet']);
         $this->zone = htmlspecialchars($_POST['zone']);
-        // form area
-        $this->areaName = htmlspecialchars($_POST['areaName']);
-        $this->status = htmlspecialchars($_POST['status']);
     }
 
-    public function test() {
-        echo $this->animalName;
-        echo $this->race;
-        echo $this->genre;
-        echo $this->regime;
-        echo $this->zone;
-
-        echo $this->areaName;
-        echo $this->status;
-    }
-
-    public function insertAnimal() {
+    public function insert() {
         $this->animalDeja = $this->animalDAO->recup_animals($this->animalName, $this->race);
 
         if(($this->animalName === $this->animalDeja['name']) AND ($this->race === $this->animalDeja['race'])) {
@@ -59,26 +41,12 @@ class Form {
             header('Location:../index.php?okAnimal='.$okAnimal);
         }
     }
-
-    public function insertArea() {
-        $this->areaDeja = $this->areaDAO->recup_areas($this->areaName);
-
-        if($this->areaDeja['name'] === $this->areaName) {
-            $erreurArea = 'Cette zone existe déjà';
-            header('Location:../index.php?erreurArea='.$erreurArea);
-        } else {
-            $this->areaDAO->insert_area($this->areaName, $this->status);
-            $okArea = 'Zone ajoutée';
-            header('Location:../index.php?okArea='.$okArea);
-        }
-    }
 }
 
 // pas bon
 
 $test = new Form();
-//$test->insertAnimal();
-$test->insertAnimal();
+$test->insert();
 
 
 

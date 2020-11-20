@@ -3,8 +3,8 @@
 require '../model/AnimalDAO.php';
 require '../model/AreaDAO.php';
 
-$zone = new AreaDAO();
-$zone->recup_areas_modify($_GET['pk'])
+$areaDAO = new AreaDAO();
+$area = $areaDAO->recup_areas_modify($_GET['pk']);
 
 
 
@@ -15,16 +15,16 @@ $zone->recup_areas_modify($_GET['pk'])
 <div class='area-modify'>
     <h1>Modifier une zone</h1>
 
-    <form action="../controller/Modify.php?pk-area=<?php echo $zone['pk']; ?>" method="post">
+    <form action="../controller/UpdateAreaController.php?pk-area=<?php echo $area['pk']; ?>" method="post">
         <p>
             <label for="name">Nom: </label>
-            <input type="text" name="areaName" id="" value='<?php echo $zone['name']; ?>' required>
+            <input type="text" name="areaName" id="" value='<?php echo $area['name']; ?>' required>
         </p>
 
         <p>
             <label for="status">Statut: </label>
-            <select name="status" id="" value='<?php echo $zone['status']; ?>' required>
-                <option value="<?php echo $zone['status'] ?>" selected><?php echo $zone['status'] ?></option>
+            <select name="status" id="" value='<?php echo $area['status']; ?>' required>
+                <option value="<?php echo $area['status'] ?>" selected><?php echo $area['status'] ?></option>
                 <option value="open">Ouvert</option>
                 <option value="closed">Fermée</option>
                 <option value="work">En travaux</option>

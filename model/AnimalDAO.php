@@ -105,7 +105,7 @@ class AnimalDAO {
 
     public function modify_animal($pkAnimal, $animalName, $race, $genre, $regime, $zone) {        
         try {
-            $statement = $this->connection->prepare("UPDATE {$this->table} SET name = '$name', race = '$race', gender = '$genre', diet = '$regime', fk_area = '$zone' WHERE pk = ?");
+            $statement = $this->connection->prepare("UPDATE {$this->table} SET name = '$animalName', race = '$race', gender = '$genre', diet = '$regime', fk_area = '$zone' WHERE pk = ?");
 
             $statement->execute([$pkAnimal]);
             
