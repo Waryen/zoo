@@ -18,11 +18,19 @@ class IndexController {
         $areaDAO = new AreaDAO();
         $animals = $animalDAO->fetch_all();
         $areas = $areaDAO->fetch_all();
+        $areasAnimals = $areaDAO->recup_areas_for_animals();
 
         include_once('views/table_layout.php');
         include_once('views/list_layout.php');
         include_once('views/form_animal.php');
         include_once('views/form_area.php');
+    }
+
+    public function form() {
+        $formAnimal = new FormAnimal();
+        $formAnimal->test();
+
+        $this->generate_view();
     }
 }
 

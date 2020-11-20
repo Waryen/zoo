@@ -1,8 +1,10 @@
 <?php
 
-
+require '../model/AnimalDAO.php';
 require '../model/AreaDAO.php';
-$zone = AreaDAO::recup_areas_modify($_GET['pk']);
+
+$zone = new AreaDAO();
+$zone->recup_areas_modify($_GET['pk'])
 
 
 
@@ -10,14 +12,13 @@ $zone = AreaDAO::recup_areas_modify($_GET['pk']);
 
 
 
-
 <div class='area-modify'>
     <h1>Modifier une zone</h1>
 
-    <form action="../controller/ModifyAreaController.php?pk=<?php echo $zone['pk']; ?>" method="post">
+    <form action="../controller/Modify.php?pk-area=<?php echo $zone['pk']; ?>" method="post">
         <p>
             <label for="name">Nom: </label>
-            <input type="text" name="name" id="" value='<?php echo $zone['name']; ?>' required>
+            <input type="text" name="areaName" id="" value='<?php echo $zone['name']; ?>' required>
         </p>
 
         <p>

@@ -1,4 +1,3 @@
-
 <div class='list-area'>
     <h2>Liste des zones du parc et leurs animaux</h2>
 
@@ -9,7 +8,7 @@
                 <h3>
                     <span><?= $area->get_name(); ?></span> 
                     <button><a href='controller/DeleteController.php?pk-area=<?= $area->get_pk(); ?>'>Supprimer</a></button>
-                    <button><a href='views/modify_zone.php?pk=<?= $area->get_pk(); ?>'>Modifier</a></button>
+                    <button><a href='views/modify_area.php?pk=<?= $area->get_pk(); ?>'>Modifier</a></button>
                 </h3>
                 <div class='area-animals'>
                     <h4>Les animaux:</h4>

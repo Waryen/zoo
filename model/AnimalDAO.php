@@ -45,23 +45,11 @@ class AnimalDAO {
         }
     }
 
-    // Supprimer un aniaml de la DB
-
-    public function delete_animal ($animal_id) {
-        try {
-            $statement = $this->connection->prepare("DELETE FROM animals WHERE pk = ?");
-            $statement->execute([$animal_id]);
-            
-        } catch (PDOException $e) {
-            print $e->getMessage();
-        }
-    }
-
     // récupération des animaux pour le formulaire d'ajout
 
-    public function recup_animals($name, $race) {
+    public function recup_animals($animalName, $race) {
         try {
-            $statement = $this->connection->prepare("SELECT * FROM animals WHERE name = ? AND race = ?");
+            $statement = $this->connection->prepare("SELECT * FROM {$this->table} WHERE name = ? AND race = ?");
             $statement->execute([$name, $race]);
             
         } catch (PDOException $e) {
@@ -82,7 +70,7 @@ class AnimalDAO {
     public function recup_animals_modify($pk) {
         try {
             $statement = $this->connection->prepare("SELECT animals.pk AS animalPk, animals.name AS animalName, animals.race AS animalRace, animals.gender AS animalGender, animals.diet AS animalDiet, areas.pk AS areaPk, areas.name AS areaName
-            FROM animals
+            FROM {$this->table}
             INNER JOIN areas ON animals.fk_area = areas.pk
             WHERE animals.pk = ?");
 
@@ -103,10 +91,10 @@ class AnimalDAO {
 
     // ajout d'un animal dans la DB
 
-    public function insert_animal($name, $race, $genre, $regime, $zone) {
+    public function insert_animal($animalName, $race, $genre, $regime, $zone) {
         try {
-            $statement = $this->connection->prepare("INSERT INTO animals (name, race, gender, diet, fk_area) VALUES (?, ?, ?, ?, ?)");
-            $statement->execute([$name, $race, $genre, $regime, $zone]);
+            $statement = $this->connection->prepare("INSERT INTO {$this->table} (name, race, gender, diet, fk_area) VALUES (?, ?, ?, ?, ?)");
+            $statement->execute([$animalName, $race, $genre, $regime, $zone]);
             
         } catch (PDOException $e) {
             print $e->getMessage();
@@ -115,16 +103,28 @@ class AnimalDAO {
 
     // modification d'un animal dans la DB
 
-    public function modify_animal($pk, $name, $race, $genre, $regime, $zone) {        
+    public function modify_animal($pkAnimal, $animalName, $race, $genre, $regime, $zone) {        
         try {
-            $statement = $this->connection->prepare("UPDATE animals SET name = '$name', race = '$race', gender = '$genre', diet = '$regime', fk_area = '$zone' WHERE pk = ?");
+            $statement = $this->connection->prepare("UPDATE {$this->table} SET name = '$name', race = '$race', gender = '$genre', diet = '$regime', fk_area = '$zone' WHERE pk = ?");
 
-            $statement->execute([$pk]);
+            $statement->execute([$pkAnimal]);
             
         } catch (PDOException $e) {
             print $e->getMessage();
         }
         
+    }
+
+    // Supprimer un aniaml de la DB
+
+    public function delete_animal ($animal_id) {
+        try {
+            $statement = $this->connection->prepare("DELETE FROM {$this->table} WHERE pk = ?");
+            $statement->execute([$animal_id]);
+            
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
     }
     
     public function instanciate ($data) {

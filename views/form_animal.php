@@ -1,19 +1,17 @@
 <?php
 
-// récupération de la liste des zones du parc
 
-$areaDAO = new AreaDAO();
-$zones = $areaDAO->recup_areas_for_animals();
+
 
 ?>
 
 <div class='form-animal'>
     <h2>Ajouter un animal</h2>
 
-    <form action="controller/FormAnimalController.php" method="post">
+    <form action="controller/FormController.php" method="post">
         <p>
             <label for="name">Nom: </label>
-            <input type="text" name="name" id="" required>
+            <input type="text" name="animalName" id="" required>
         </p>
 
         <p>
@@ -25,7 +23,7 @@ $zones = $areaDAO->recup_areas_for_animals();
             <label for="gender">Genre: </label>
             <select name="gender" id="" required>
                 <option value="male">Male</option>
-                <option value="female">Femelle</option>
+                <option value="female">Female</option>
             </select>
         </p>
 
@@ -41,7 +39,7 @@ $zones = $areaDAO->recup_areas_for_animals();
         <p>
             <label for="zone">Zone du parc: </label>
             <select name="zone" id="" required>
-                <?php foreach ($zones as $zone ) { ?> 
+                <?php foreach ($areasAnimals as $zone ) { ?> 
                     <option value="<?php echo $zone['pk']; ?>"><?php echo $zone['name']; ?></option>
                 <?php } ?>
             </select>
@@ -53,7 +51,7 @@ $zones = $areaDAO->recup_areas_for_animals();
             <?php
                 if(isset($_GET["okAnimal"])) {
                     echo $_GET["okAnimal"];
-                } else {
+                } elseif (isset($_GET['erreurAnimal'])) {
                     echo $_GET['erreurAnimal'];
                 }
             ?>

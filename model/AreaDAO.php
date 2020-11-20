@@ -86,10 +86,10 @@ class AreaDAO {
 
     // fonction qui ajoute une zone
 
-    public function insert_area($name, $status) {
+    public function insert_area($areaName, $status) {
         try {
             $statement = $this->connection->prepare("INSERT INTO {$this->table} (name, status) VALUES (?, ?)");
-            $statement->execute([$name, $status]);
+            $statement->execute([$areaName, $status]);
 
         } catch (PDOException $e) {
             print $e->getMessage();
@@ -110,10 +110,10 @@ class AreaDAO {
 
     // modification d'une zone dans la DB
 
-    public function modify_area($pk, $name, $status) {
+    public function modify_area($pkArea, $areaName, $status) {
         try {
             $statement = $this->connection->prepare("UPDATE {$this->table} SET name = '$name', status = '$status' WHERE pk = ?");
-            $statement->execute([$pk]);
+            $statement->execute([$pkArea]);
             
         } catch (PDOException $e) {
             print $e->getMessage();
