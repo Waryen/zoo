@@ -47,11 +47,9 @@ class AnimalDAO {
 
     // Supprimer un aniaml de la DB
 
-    public static function delete_animal ($animal_id) {
-        //echo $animal_id;
+    public function delete_animal ($animal_id) {
         try {
-            $connection = new PDO('mysql:host=localhost;dbname=parc', 'root', 'root');
-            $statement = $connection->prepare("DELETE FROM animals WHERE pk = ?");
+            $statement = $this->connection->prepare("DELETE FROM animals WHERE pk = ?");
             $statement->execute([$animal_id]);
             
         } catch (PDOException $e) {
@@ -61,10 +59,9 @@ class AnimalDAO {
 
     // récupération des animaux pour le formulaire d'ajout
 
-    public static function recup_animals($name, $race) {
+    public function recup_animals($name, $race) {
         try {
-            $connection = new PDO('mysql:host=localhost;dbname=parc', 'root', 'root');
-            $statement = $connection->prepare("SELECT * FROM animals WHERE name = ? AND race = ?");
+            $statement = $this->connection->prepare("SELECT * FROM animals WHERE name = ? AND race = ?");
             $statement->execute([$name, $race]);
             
         } catch (PDOException $e) {
@@ -82,11 +79,9 @@ class AnimalDAO {
 
     // récupération des animaux pour le formulaire de modification
 
-    public static function recup_animals_modify($pk) {
+    public function recup_animals_modify($pk) {
         try {
-            $connection = new PDO('mysql:host=localhost;dbname=parc', 'root', 'root');
-
-            $statement = $connection->prepare("SELECT animals.pk AS animalPk, animals.name AS animalName, animals.race AS animalRace, animals.gender AS animalGender, animals.diet AS animalDiet, areas.pk AS areaPk, areas.name AS areaName
+            $statement = $this->connection->prepare("SELECT animals.pk AS animalPk, animals.name AS animalName, animals.race AS animalRace, animals.gender AS animalGender, animals.diet AS animalDiet, areas.pk AS areaPk, areas.name AS areaName
             FROM animals
             INNER JOIN areas ON animals.fk_area = areas.pk
             WHERE animals.pk = ?");
@@ -108,10 +103,9 @@ class AnimalDAO {
 
     // ajout d'un animal dans la DB
 
-    public static function insert_animal($name, $race, $genre, $regime, $zone) {
+    public function insert_animal($name, $race, $genre, $regime, $zone) {
         try {
-            $connection = new PDO('mysql:host=localhost;dbname=parc', 'root', 'root');
-            $statement = $connection->prepare("INSERT INTO animals (name, race, gender, diet, fk_area) VALUES (?, ?, ?, ?, ?)");
+            $statement = $this->connection->prepare("INSERT INTO animals (name, race, gender, diet, fk_area) VALUES (?, ?, ?, ?, ?)");
             $statement->execute([$name, $race, $genre, $regime, $zone]);
             
         } catch (PDOException $e) {
@@ -121,13 +115,9 @@ class AnimalDAO {
 
     // modification d'un animal dans la DB
 
-    public static function modify_animal($pk, $name, $race, $genre, $regime, $zone) {
-        //echo $pk.' '.$name.' '.$race.' '.$genre.' '.$regime.' '.$zone;
-        
+    public function modify_animal($pk, $name, $race, $genre, $regime, $zone) {        
         try {
-            $connection = new PDO('mysql:host=localhost;dbname=parc', 'root', 'root');
-
-            $statement = $connection->prepare("UPDATE animals SET name = '$name', race = '$race', gender = '$genre', diet = '$regime', fk_area = '$zone' WHERE pk = ?");
+            $statement = $this->connection->prepare("UPDATE animals SET name = '$name', race = '$race', gender = '$genre', diet = '$regime', fk_area = '$zone' WHERE pk = ?");
 
             $statement->execute([$pk]);
             

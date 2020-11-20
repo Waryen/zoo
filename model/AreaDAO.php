@@ -30,10 +30,9 @@ class AreaDAO {
 
     // fonction qui récupère les zones pour le formulaire d'ajout d'un animal
 
-    public static function recup_areas_for_animals() {
+    public function recup_areas_for_animals() {
         try {
-            $connection = new PDO('mysql:host=localhost;dbname=parc', 'root', 'root');
-            $statement = $connection->prepare("SELECT * FROM areas");
+            $statement = $this->connection->prepare("SELECT * FROM {$this->table}");
             $statement->execute();
             
         } catch (PDOException $e) {
@@ -47,10 +46,9 @@ class AreaDAO {
     
     // récupération des animaux pour le formulaire de modification
 
-    public static function recup_areas_modify($pk) {
+    public function recup_areas_modify($pk) {
         try {
-            $connection = new PDO('mysql:host=localhost;dbname=parc', 'root', 'root');
-            $statement = $connection->prepare("SELECT * FROM areas WHERE pk = ?");
+            $statement = $this->connection->prepare("SELECT * FROM {$this->table} WHERE pk = ?");
             $statement->execute([$pk]);
             
         } catch (PDOException $e) {
@@ -68,10 +66,9 @@ class AreaDAO {
 
     // fonction qui récupère les zones pour le formulaire area
 
-    public static function recup_areas($name) {
+    public function recup_areas($name) {
         try {
-            $connection = new PDO('mysql:host=localhost;dbname=parc', 'root', 'root');
-            $statement = $connection->prepare("SELECT * FROM areas WHERE name = ?");
+            $statement = $this->connection->prepare("SELECT * FROM {$this->table} WHERE name = ?");
             $statement->execute([$name]);
             
         } catch (PDOException $e) {
@@ -89,10 +86,9 @@ class AreaDAO {
 
     // fonction qui ajoute une zone
 
-    public static function insert_area($name, $status) {
+    public function insert_area($name, $status) {
         try {
-            $connection = new PDO('mysql:host=localhost;dbname=parc', 'root', 'root');
-            $statement = $connection->prepare("INSERT INTO areas (name, status) VALUES (?, ?)");
+            $statement = $this->connection->prepare("INSERT INTO {$this->table} (name, status) VALUES (?, ?)");
             $statement->execute([$name, $status]);
 
         } catch (PDOException $e) {
@@ -102,11 +98,9 @@ class AreaDAO {
 
     // fonction qui supprime une zone
 
-    public static function delete_area ($area_id) {
-        //echo $area_id;
+    public function delete_area ($area_id) {
         try {
-            $connection = new PDO('mysql:host=localhost;dbname=parc', 'root', 'root');
-            $statement = $connection->prepare("DELETE FROM areas WHERE pk = ?");
+            $statement = $this->connection->prepare("DELETE FROM {$this->table} WHERE pk = ?");
             $statement->execute([$area_id]);
             
         } catch (PDOException $e) {
@@ -116,14 +110,9 @@ class AreaDAO {
 
     // modification d'une zone dans la DB
 
-    public static function modify_area($pk, $name, $status) {
-        //echo $pk.' '.$name.' '.$status;
-        
+    public function modify_area($pk, $name, $status) {
         try {
-            $connection = new PDO('mysql:host=localhost;dbname=parc', 'root', 'root');
-
-            $statement = $connection->prepare("UPDATE areas SET name = '$name', status = '$status' WHERE pk = ?");
-
+            $statement = $this->connection->prepare("UPDATE {$this->table} SET name = '$name', status = '$status' WHERE pk = ?");
             $statement->execute([$pk]);
             
         } catch (PDOException $e) {

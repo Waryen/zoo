@@ -1,7 +1,9 @@
 <?php
 
 // récupération de la liste des zones du parc
-$zones = AreaDAO::recup_areas_for_animals();
+
+$areaDAO = new AreaDAO();
+$zones = $areaDAO->recup_areas_for_animals();
 
 ?>
 
