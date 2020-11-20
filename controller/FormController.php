@@ -15,9 +15,11 @@ class Form {
     private $genre;
     private $regime;
     private $zone;
+    private $animalDeja;
     // form area
     private $areaName;
     private $status;
+    private $areaDeja;
 
     public function __construct() {
         $this->connection = new PDO('mysql:host=localhost;dbname=parc', 'root', 'root');
@@ -46,24 +48,28 @@ class Form {
     }
 
     public function insertAnimal() {
-        $animalDeja = $this->animalDAO->recup_animals($this->animalName, $this->race);
+        $this->animalDeja = $this->animalDAO->recup_animals($this->animalName, $this->race);
 
         if(($this->animalName === $this->animalDeja['name']) AND ($this->race === $this->animalDeja['race'])) {
             $erreurAnimal = 'Cet animal existe déjà';
+            header('Location:../index.php?erreurAnimal='.$erreurAnimal);
         } else {
             $this->animalDAO->insert_animal($this->animalName, $this->race, $this->genre, $this->regime, $this->zone);
             $okAnimal = 'Animal ajouté';
+            header('Location:../index.php?okAnimal='.$okAnimal);
         }
     }
 
     public function insertArea() {
-        $areaDeja = $this->areaDAO->recup_areas($this->areaName);
+        $this->areaDeja = $this->areaDAO->recup_areas($this->areaName);
 
         if($this->areaDeja['name'] === $this->areaName) {
             $erreurArea = 'Cette zone existe déjà';
+            header('Location:../index.php?erreurArea='.$erreurArea);
         } else {
             $this->areaDAO->insert_area($this->areaName, $this->status);
             $okArea = 'Zone ajoutée';
+            header('Location:../index.php?okArea='.$okArea);
         }
     }
 }
@@ -72,8 +78,7 @@ class Form {
 
 $test = new Form();
 //$test->insertAnimal();
-$test->insertArea();
-header('Location:../index.php');
+$test->insertAnimal();
 
 
 

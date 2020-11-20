@@ -50,7 +50,7 @@ class AnimalDAO {
     public function recup_animals($animalName, $race) {
         try {
             $statement = $this->connection->prepare("SELECT * FROM {$this->table} WHERE name = ? AND race = ?");
-            $statement->execute([$name, $race]);
+            $statement->execute([$animalName, $race]);
             
         } catch (PDOException $e) {
             print $e->getMessage();
