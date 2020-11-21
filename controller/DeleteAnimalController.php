@@ -1,5 +1,6 @@
 <?php
 
+require '../model/DAO.php';
 require '../model/AnimalDAO.php';
 
 // Objet qui supprime un animal

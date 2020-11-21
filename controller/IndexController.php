@@ -26,13 +26,6 @@ class IndexController {
         include_once('views/form_animal.php');
         include_once('views/form_area.php');
     }
-
-    public function form() {
-        $formAnimal = new FormAnimal();
-        $formAnimal->test();
-
-        $this->generate_view();
-    }
 }
 
 ?>

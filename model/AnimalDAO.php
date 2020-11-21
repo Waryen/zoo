@@ -2,13 +2,14 @@
 
 //require 'DAO.php';
 
-class AnimalDAO {
+class AnimalDAO extends DAO {
     private $table;
-    private $connection;
+    //private $connection;
     
     public function __construct() {
+        parent::__construct();
         $this->table = "animals";
-        $this->connection = new PDO('mysql:host=localhost;dbname=parc', 'root', 'root');
+        //$this->connection = new PDO('mysql:host=localhost;dbname=parc', 'root', 'root');
     }
     
     public function fetch_all () {

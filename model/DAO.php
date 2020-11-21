@@ -1,7 +1,11 @@
 <?php
 
-abstract class DAO {
-    private $connection;
+class DAO {
+    protected $connection;
+
+    protected function __construct() {
+        $this->connection = new PDO('mysql:host=localhost;dbname=parc', 'root', 'root');
+    }
 }
 
 
