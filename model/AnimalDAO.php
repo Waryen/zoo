@@ -2,8 +2,9 @@
 
 //require 'DAO.php';
 
-class AnimalDAO extends DAO {
+class AnimalDAO {
     private $table;
+    private $connection;
     
     public function __construct() {
         $this->table = "animals";
