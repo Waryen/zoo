@@ -6,7 +6,6 @@ require '../model/AreaDAO.php';
 // Objet d'ajout d'une zone
 
 class Form {
-    private $connection;
     private $animalDAO;
     private $areaDAO;
     // form area
@@ -15,7 +14,6 @@ class Form {
     private $areaDeja;
 
     public function __construct() {
-        $this->connection = new PDO('mysql:host=localhost;dbname=parc', 'root', 'root');
         $this->animalDAO = new AnimalDAO();
         $this->areaDAO = new AreaDAO();
         // form area

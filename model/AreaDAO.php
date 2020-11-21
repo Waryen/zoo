@@ -1,8 +1,9 @@
 <?php
 
-class AreaDAO {
+//require 'DAO.php';
+
+class AreaDAO extends DAO {
     private $table;
-    private $connection;
     private $animalDAO;
     public function __construct() {
         $this->animalDAO = new AnimalDAO();

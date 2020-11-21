@@ -6,7 +6,6 @@ require '../model/AreaDAO.php';
 // Objet d'ajout d'un animal
 
 class Form {
-    private $connection;
     private $animalDAO;
     private $areaDAO;
     // form animal
@@ -18,7 +17,6 @@ class Form {
     private $animalDeja;
 
     public function __construct() {
-        $this->connection = new PDO('mysql:host=localhost;dbname=parc', 'root', 'root');
         $this->animalDAO = new AnimalDAO();
         $this->areaDAO = new AreaDAO();
         // form animal
