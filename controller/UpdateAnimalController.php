@@ -6,9 +6,9 @@ require '../model/AreaDAO.php';
 
 // Objet qui modifie un animal
 
-class Modify {
-    private $animalDAO;
-    private $areaDAO;
+class Modify extends AnimalDAO {
+    //private $animalDAO;
+    //private $areaDAO;
     private $pkAnimal;
     //animal
     private $animalName;
@@ -18,8 +18,9 @@ class Modify {
     private $zone;
 
     public function __construct() {
-        $this->animalDAO = new AnimalDAO();
-        $this->areaDAO = new AreaDAO();
+        //$this->animalDAO = new AnimalDAO();
+        //$this->areaDAO = new AreaDAO();
+        parent::__construct();
         $this->pkAnimal = $_GET['pk-animal'];
         //animal
         $this->animalName = htmlspecialchars($_POST['animalName']);
@@ -30,7 +31,7 @@ class Modify {
     }
 
     public function update() {
-        $this->animalDAO->modify_animal($this->pkAnimal, $this->animalName, $this->race, $this->genre, $this->regime, $this->zone);
+        $this->modify_animal($this->pkAnimal, $this->animalName, $this->race, $this->genre, $this->regime, $this->zone);
         header('Location:../index.php');
     }
 }

@@ -5,18 +5,19 @@ require '../model/AnimalDAO.php';
 
 // Objet qui supprime un animal
 
-class Delete {
-    private $animalDAO;
+class Delete extends AnimalDAO {
+    //private $animalDAO;
     private $animal_id;
 
     public function __construct() {
-        $this->animalDAO = new AnimalDAO();
+        //$this->animalDAO = new AnimalDAO();
+        parent::__construct();
         $this->animal_id = $_GET['pk-animal'];
     }
 
     public function delete() {
         if(!empty($this->animal_id)) {
-            $this->animalDAO->delete_animal($this->animal_id);
+            $this->delete_animal($this->animal_id);
             header('Location:../index.php');
         } else {
             header('Location:../index.php');

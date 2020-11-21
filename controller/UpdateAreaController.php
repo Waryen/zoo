@@ -6,17 +6,18 @@ require '../model/AreaDAO.php';
 
 // Objet qui modifie une zone
 
-class Modify {
-    private $animalDAO;
-    private $areaDAO;
+class Modify extends AreaDAO {
+    //private $animalDAO;
+    //private $areaDAO;
     private $pkArea;
     //zone
     private $areaName;
     private $status;
 
     public function __construct() {
-        $this->animalDAO = new AnimalDAO();
-        $this->areaDAO = new AreaDAO();
+        //$this->animalDAO = new AnimalDAO();
+        //$this->areaDAO = new AreaDAO();
+        parent::__construct();
         $this->pkArea = $_GET['pk-area'];
         //zone
         $this->areaName = htmlspecialchars($_POST['areaName']);
@@ -24,7 +25,7 @@ class Modify {
     }
 
     public function update() {
-        $this->areaDAO->modify_area($this->pkArea, $this->areaName, $this->status);
+        $this->modify_area($this->pkArea, $this->areaName, $this->status);
         header('Location:../index.php');
     }
 }

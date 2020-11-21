@@ -6,20 +6,21 @@ require '../model/AnimalDAO.php';
 
 // Objet qui supprime une zone
 
-class Delete {
+class Delete extends AreaDAO {
     private $areaDAO;
-    private $animalDAO;
-    private $area_id;
+    //private $animalDAO;
+    //private $area_id;
 
     public function __construct() {
-        $this->areaDAO = new AreaDAO();
-        $this->animalDAO = new AnimalDAO();
+        //$this->areaDAO = new AreaDAO();
+        //$this->animalDAO = new AnimalDAO();
+        parent::__construct();
         $this->area_id = $_GET['pk-area'];
     }
 
     public function delete() {
         if(!empty($this->area_id)) {
-            $this->areaDAO->delete_area($this->area_id);
+            $this->delete_area($this->area_id);
             header('Location:../index.php');
         } else {
             header('Location:../index.php');
