@@ -7,7 +7,7 @@
             <ul>
                 <h3>
                     <span><?= $area->get_name(); ?></span> 
-                    <button><a href='controller/DeleteController.php?pk-area=<?= $area->get_pk(); ?>'>Supprimer</a></button>
+                    <button><a href='controller/DeleteAreaController.php?pk-area=<?= $area->get_pk(); ?>'>Supprimer</a></button>
                     <button><a href='views/modify_area.php?pk=<?= $area->get_pk(); ?>'>Modifier</a></button>
                 </h3>
                 <div class='area-animals'>

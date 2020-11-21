@@ -1,13 +1,13 @@
 <?php
 
 require '../model/AnimalDAO.php';
-require '../model/AreaDAO.php';
+//require '../model/AreaDAO.php';
 
 // Objet d'ajout d'un animal
 
 class Form {
     private $animalDAO;
-    private $areaDAO;
+    //private $areaDAO;
     // form animal
     private $animalName;
     private $race;
@@ -18,7 +18,7 @@ class Form {
 
     public function __construct() {
         $this->animalDAO = new AnimalDAO();
-        $this->areaDAO = new AreaDAO();
+        //$this->areaDAO = new AreaDAO();
         // form animal
         $this->animalName = htmlspecialchars($_POST['animalName']);
         $this->race = htmlspecialchars($_POST['race']);

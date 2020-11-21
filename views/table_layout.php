@@ -18,7 +18,7 @@
                 <td><?= $animal->get_gender(); ?></td>
                 <td><?= $animal->eat(); ?></td>
                 <td>
-                    <button><a href='controller/DeleteController.php?pk-animal=<?= $animal->get_pk(); ?>'>Supprimer</a></button>
+                    <button><a href='controller/DeleteAnimalController.php?pk-animal=<?= $animal->get_pk(); ?>'>Supprimer</a></button>
                     <button><a href="views/modify_animal.php?pk=<?= $animal->get_pk(); ?>">Modifier</a></button>
                 </td>
             </tr>

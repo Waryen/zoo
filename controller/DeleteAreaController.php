@@ -1,43 +1,36 @@
 <?php
 
-require '../model/AnimalDAO.php';
 require '../model/AreaDAO.php';
+require '../model/AnimalDAO.php';
 
-// Objet qui supprime un animal ou une zone
+// Objet qui supprime une zone
 
 class Delete {
-    private $animalDAO;
     private $areaDAO;
-    private $animal_id;
+    private $animalDAO;
     private $area_id;
 
     public function __construct() {
-        $this->animalDAO = new AnimalDAO();
         $this->areaDAO = new AreaDAO();
-        $this->animal_id = $_GET['pk-animal'];
+        $this->animalDAO = new AnimalDAO();
         $this->area_id = $_GET['pk-area'];
     }
 
-    public function test() {
-        echo $this->animal_id;
-        echo $this->area_id;
-    }
-
-    public function deleteAnimal() {
-        $this->animalDAO->delete_animal($this->animal_id);
-    }
-
-    public function deleteArea() {
-        $this->areaDAO->delete_area($this->area_id);
+    public function delete() {
+        if(!empty($this->area_id)) {
+            $this->areaDAO->delete_area($this->area_id);
+            header('Location:../index.php');
+        } else {
+            header('Location:../index.php');
+        }
+        
     }
 }
 
 // pas bon
 
 $test = new Delete();
-$test->deleteArea();
-$test->deleteAnimal();
-header('Location:../index.php');
+$test->delete();
 
 
 
