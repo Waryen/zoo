@@ -3,18 +3,12 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 20, 2020 at 01:21 AM
+-- Generation Time: Dec 01, 2020 at 10:42 AM
 -- Server version: 5.7.30
--- PHP Version: 7.4.9
+-- PHP Version: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `parc`
@@ -44,9 +38,14 @@ INSERT INTO `animals` (`pk`, `race`, `name`, `gender`, `diet`, `fk_area`) VALUES
 (2, 'Giraffe', 'Melman', 'male', 'herbivore', 2),
 (3, 'Ours', 'Macha', 'female', 'omnivore', 1),
 (6, 'Pangolin', 'Kevin', 'female', 'omnivore', 5),
-(7, 'Cheval', 'Jean', 'male', 'carnivore', 9),
 (9, 'Orc', 'Paul', 'female', 'omnivore', 3),
-(12, 'Lion', 'Louis', 'male', 'carnivore', 2);
+(12, 'Lion', 'Louis', 'male', 'carnivore', 2),
+(13, 'Jument', 'Lena', 'female', 'herbivore', 5),
+(17, 'Chat', 'Simba', 'male', 'carnivore', 1),
+(19, 'Cheval', 'Gandalf', 'male', 'herbivore', 2),
+(20, 'Porc', 'Saruman', 'male', 'carnivore', 12),
+(21, 'Lémurien', 'Frodon', 'male', 'omnivore', 2),
+(26, 'Ogre', 'Shrek', 'male', 'carnivore', 23);
 
 -- --------------------------------------------------------
 
@@ -67,10 +66,11 @@ CREATE TABLE `areas` (
 INSERT INTO `areas` (`pk`, `name`, `status`) VALUES
 (1, 'Tundra', 'open'),
 (2, 'Afrique', 'work'),
-(3, 'Eau', 'closed'),
+(3, 'Aquarium', 'closed'),
 (5, 'Asie', 'closed'),
-(9, 'Eau', 'work'),
-(10, 'Afganistan', 'work');
+(12, 'Jungle', 'closed'),
+(23, 'Marécage', 'closed'),
+(24, 'Plaine', 'open');
 
 --
 -- Indexes for dumped tables
@@ -97,13 +97,13 @@ ALTER TABLE `areas`
 -- AUTO_INCREMENT for table `animals`
 --
 ALTER TABLE `animals`
-  MODIFY `pk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `pk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `areas`
 --
 ALTER TABLE `areas`
-  MODIFY `pk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `pk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables
@@ -114,7 +114,3 @@ ALTER TABLE `areas`
 --
 ALTER TABLE `animals`
   ADD CONSTRAINT `fk_area_relation` FOREIGN KEY (`fk_area`) REFERENCES `areas` (`pk`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
