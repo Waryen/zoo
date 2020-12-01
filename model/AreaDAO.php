@@ -3,7 +3,7 @@
 //require 'DAO.php';
 
 class AreaDAO extends DAO {
-    private $table;
+    //private $table;
     private $animalDAO;
     //private $connection;
 

@@ -3,7 +3,7 @@
 //require 'DAO.php';
 
 class AnimalDAO extends DAO {
-    private $table;
+    //private $table;
     //private $connection;
     
     public function __construct() {
