@@ -14,7 +14,9 @@ $area = $areaDAO->recup_areas_for_animals();
 
 ?>
 
-
+<div class="link-accueil">
+    <p><a href="../index.php">Retour à la gestion du parc</a></p>
+</div>
 
 <div class='mod-animal'>
     <h1>Modifier un animal</h1>

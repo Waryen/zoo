@@ -11,7 +11,9 @@ $area = $areaDAO->recup_areas_modify($_GET['pk']);
 
 ?>
 
-
+<div class="link-accueil">
+    <p><a href="../index.php">Retour à la gestion du parc</a></p>
+</div>
 
 <div class='area-modify'>
     <h1>Modifier une zone</h1>

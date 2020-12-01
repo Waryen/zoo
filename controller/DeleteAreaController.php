@@ -29,8 +29,6 @@ class Delete extends AreaDAO {
     }
 }
 
-// pas bon
-
 $test = new Delete();
 $test->delete();
 
